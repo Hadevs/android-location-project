@@ -37,10 +37,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun startFormattingPhoneField() {
         val phoneField = findViewById<EditText>(R.id.editText)
-        phoneField.onTextChanged {
-            val text = PhoneFormatter.format(phoneField.text.toString())
-            phoneField.setText(text)
-            phoneField.setSelection(text.length)
-        }
+        phoneField.add(PhoneFormatter)
     }
 }

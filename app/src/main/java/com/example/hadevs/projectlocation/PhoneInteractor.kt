@@ -3,10 +3,18 @@ package com.example.hadevs.projectlocation
 class PhoneInteractor {
 
 }
-object PhoneFormatter {
-    fun format(phone: String): String {
-        val re = Regex("[^A-Za-z0-9]")
-        val formatted = re.replace(phone, "")
+
+interface StringFormatter {
+    fun format(value: String): String
+}
+
+object PhoneFormatter: StringFormatter {
+    override fun format(phone: String): String {
+        val re = Regex("[^0-9]")
+        var formatted = re.replace(phone, "")
+        if (formatted[0].toString() != "7") {
+            formatted = "7$formatted"
+        }
 
         return when(formatted.length) {
             0 -> "+7"
