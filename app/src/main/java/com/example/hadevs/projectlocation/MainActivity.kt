@@ -11,6 +11,9 @@ import android.view.Gravity
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.graphics.Typeface
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import org.w3c.dom.Text
 
 
@@ -21,10 +24,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setActionBarWith(resources.getString(R.string.agent_screen_title));
-        val tx = findViewById<TextView>(R.id.textView)
-        val custom_font = Typeface.createFromAsset(assets, "font/Roboto-Medium.ttf")
-        tx.setTypeface(custom_font)
+        startFormattingPhoneField()
     }
+
+    private fun startFormattingPhoneField() {
+        val phoneField = findViewById<EditText>(R.id.editText)
+        phoneField.onTextChanged {
+            System.out.println("=======");
+            val text = PhoneFormatter.format(phoneField.text.toString())
+            phoneField.setText(text)
+            phoneField.setSelection(text.length)
+        }
+    }
+
 
     private fun setActionBarWith(title: String) {
         val ab = supportActionBar

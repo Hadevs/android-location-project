@@ -18,6 +18,62 @@
         android:text="РЕГИСТРАЦИЯ"
         android:textColor="@android:color/black"
         android:textSize="28sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/roboto_medium"
         android:typeface="normal" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="32dp"
+        android:editable="false"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Пожалуйста, введите свой номер в менждународном формате, например +7 925 555 66 23"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:typeface="normal" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="32dp"
+        android:editable="false"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Мы вышлем Вам код в СМС-сообщении"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:typeface="normal" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="44sp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/back_border"
+        android:ems="10"
+        android:hint="+7 --- --- -- --"
+        android:inputType="phone"
+        android:paddingLeft="16dp"
+        android:paddingRight="8dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/default_button"
+        android:text="@string/registration"
+        android:textColor="#fff"
+        android:textSize="14sp" />
 </LinearLayout>

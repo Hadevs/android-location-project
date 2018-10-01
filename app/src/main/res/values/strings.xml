@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ProjectLocation</string>
     <string name="agent_screen_title">Грузовой агент</string>
+    <string name="registration">РЕГИСТРАЦИЯ</string>
 </resources>
