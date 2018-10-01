@@ -1,4 +1,4 @@
-package com.example.hadevs.projectlocation
+package com.example.hadevs.projectlocation.Extensions
 
 import android.animation.ValueAnimator
 import android.app.Activity
@@ -13,6 +13,8 @@ import android.support.annotation.RequiresApi
 import android.view.Gravity
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.example.hadevs.projectlocation.Help_files.DispatchGroup
+import com.example.hadevs.projectlocation.R
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Activity.setActionBarWith(actionBar: android.support.v7.app.ActionBar?, title: String) {

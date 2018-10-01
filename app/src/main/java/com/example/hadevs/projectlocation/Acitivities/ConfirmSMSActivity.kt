@@ -1,10 +1,13 @@
-package com.example.hadevs.projectlocation
+package com.example.hadevs.projectlocation.Acitivities
 
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.widget.EditText
+import com.example.hadevs.projectlocation.Extensions.setActionBarWith
+import com.example.hadevs.projectlocation.Interactors.PhoneFormatter
+import com.example.hadevs.projectlocation.R
 
 class ConfirmSMSActivity : AppCompatActivity() {
 

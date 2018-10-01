@@ -1,12 +1,4 @@
-package com.example.hadevs.projectlocation
-
-class PhoneInteractor {
-
-}
-
-interface StringFormatter {
-    fun format(value: String): String
-}
+package com.example.hadevs.projectlocation.Formatters
 
 object PhoneFormatter: StringFormatter {
     override fun format(phone: String): String {
@@ -29,7 +21,7 @@ object PhoneFormatter: StringFormatter {
             9 -> "+" + formatted[0] + "(" + formatted.substring(1,4) + ")" + " " + formatted.substring(4,7) + " " + formatted.substring(7,9)
             10 -> "+" + formatted[0] + "(" + formatted.substring(1,4) + ")" + " " + formatted.substring(4,7) + " " + formatted.substring(7,9) + " " + formatted[9]
             11 -> "+" + formatted[0] + "(" + formatted.substring(1,4) + ")" + " " + formatted.substring(4,7) + " " + formatted.substring(7,9) + " " + formatted.substring(9, 11)
-            else -> format(formatted.substring(0,11))
+            else -> format(formatted.substring(0, 11))
         }
     }
 }

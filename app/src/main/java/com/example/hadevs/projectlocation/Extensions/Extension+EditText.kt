@@ -1,8 +1,9 @@
-package com.example.hadevs.projectlocation
+package com.example.hadevs.projectlocation.Extensions
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import com.example.hadevs.projectlocation.Interactors.StringFormatter
 
 fun EditText.add(formatter: StringFormatter) {
     onTextChanged {

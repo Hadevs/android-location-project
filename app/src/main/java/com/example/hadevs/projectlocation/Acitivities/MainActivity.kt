@@ -1,4 +1,4 @@
-package com.example.hadevs.projectlocation
+package com.example.hadevs.projectlocation.Acitivities
 
 import android.content.Intent
 import android.os.Build
@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.widget.Button
 import android.widget.EditText
+import com.example.hadevs.projectlocation.Extensions.add
+import com.example.hadevs.projectlocation.Interactors.PhoneFormatter
+import com.example.hadevs.projectlocation.R
 
 
 class MainActivity : AppCompatActivity() {
