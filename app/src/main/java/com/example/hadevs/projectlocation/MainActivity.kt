@@ -30,12 +30,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun registerButtonClicked() {
-        val idsArrayList: IntArray = intArrayOf(R.id.button, R.id.textView2, R.id.textView3, R.id.editText)
-        animate(idsArrayList.toCollection(ArrayList()), Direction.LEFT, closure = {
-            val intent = Intent(this, ConfirmSMSActivity::class.java)
-            startActivity(intent)
-            this.overridePendingTransition(0,0)
-        })
+        val intent = Intent(this, ConfirmSMSActivity::class.java)
+        startActivity(intent)
+        this.overridePendingTransition(0,0)
     }
 
     private fun startFormattingPhoneField() {

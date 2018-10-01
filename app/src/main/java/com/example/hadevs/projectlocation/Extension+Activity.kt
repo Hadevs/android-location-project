@@ -31,44 +31,54 @@ fun Activity.setActionBarWith(actionBar: android.support.v7.app.ActionBar?, titl
     actionBar?.customView = tv
 }
 
-fun Activity.animateElements(views: ArrayList<View>, direction: Direction, closure: () -> Unit = {}) {
+fun Activity.animateElements(views: ArrayList<View>, duration: Long = 100, position: Position, closure: () -> Unit = {}) {
     val windowWidth = window.windowManager.defaultDisplay.width.toFloat()
     val windowHeight = window.windowManager.defaultDisplay.height.toFloat()
-    val toValue: Float = when(direction) {
-        Direction.DOWN -> windowHeight
-        Direction.LEFT -> -windowWidth
-        Direction.RIGHT -> windowWidth
-        Direction.UP -> -windowHeight
+    fun calculateValueBy(view: View): Float {
+        return when(position) {
+            Position.DOWN -> windowHeight
+            Position.LEFT -> -windowWidth
+            Position.RIGHT -> windowWidth
+            Position.UP -> -windowHeight
+            Position.CENTER_X -> windowWidth / 2
+            Position.CENTER_Y -> windowHeight / 2 - view.height / 2
+        }
     }
 
-    val valueAnimator = ValueAnimator.ofFloat(0f, toValue)
 
-    valueAnimator.addUpdateListener {
-        val value = it.animatedValue as Float
-        for (view in views) {
-            if (direction == Direction.UP || direction == Direction.DOWN) {
+    val dispatchGroup = DispatchGroup()
+    for (view in views) {
+        val k = calculateValueBy(view)
+        val width = view.width
+
+        val valueAnimator = ValueAnimator.ofFloat(0f, k - view.width)
+
+        valueAnimator.addUpdateListener {
+            val value = it.animatedValue as Float
+            if (position == Position.UP || position == Position.DOWN || position == Position.CENTER_Y) {
                 view.translationY = value
             } else {
                 view.translationX = value
             }
         }
+        valueAnimator.interpolator = LinearInterpolator()
+        valueAnimator.duration = duration
+        dispatchGroup.enter()
+        valueAnimator.start()
+        valueAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                dispatchGroup.leave()
+            }
+        })
     }
-
-    valueAnimator.interpolator = LinearInterpolator()
-    valueAnimator.duration = 100
-
-    valueAnimator.start()
-    valueAnimator.addListener(object : AnimatorListenerAdapter() {
-        override fun onAnimationEnd(animation: Animator) {
-            closure()
-        }
-    })
+    val callback = Runnable(closure)
+    dispatchGroup.notify(callback)
 }
 
-fun Activity.animate(ids: ArrayList<Int>, direction: Direction, closure: () -> Unit = {}) {
-    animateElements(ids.map { this.findViewById<View>(it) } as ArrayList<View>, direction, closure)
+fun Activity.animate(ids: ArrayList<Int>, duration: Long = 100, position: Position, closure: () -> Unit = {}) {
+    animateElements(ids.map { this.findViewById<View>(it) } as ArrayList<View>, duration, position, closure)
 }
 
-enum class Direction {
-    UP, DOWN, LEFT, RIGHT
+enum class Position {
+    UP, DOWN, LEFT, RIGHT, CENTER_X, CENTER_Y
 }
