@@ -4,7 +4,7 @@ object PhoneFormatter: StringFormatter {
     override fun format(phone: String): String {
         val re = Regex("[^0-9]")
         var formatted = re.replace(phone, "")
-        if (formatted[0].toString() != "7") {
+        if (!formatted.isEmpty() && formatted[0].toString() != "7") {
             formatted = "7$formatted"
         }
 

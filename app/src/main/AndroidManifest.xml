@@ -18,7 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Acitivities.ConfirmSMSActivity"></activity>
+        <activity android:name=".Acitivities.ConfirmSMSActivity" />
+        <activity android:name=".Activities.OperatorCallActivity" />
+        <activity android:name=".Activities.MyDataActivity"></activity>
     </application>
 
 </manifest>

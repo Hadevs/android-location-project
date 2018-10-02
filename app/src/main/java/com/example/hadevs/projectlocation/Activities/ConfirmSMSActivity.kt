@@ -25,9 +25,7 @@ import android.text.style.TypefaceSpan
 import com.example.hadevs.projectlocation.Help_files.CustomTypefaceSpan
 import android.text.Spanned
 import android.text.SpannableStringBuilder
-
-
-
+import android.widget.TextView
 
 class ConfirmSMSActivity : AppCompatActivity() {
 
@@ -39,10 +37,22 @@ class ConfirmSMSActivity : AppCompatActivity() {
         setActionBarWith(supportActionBar, title)
         addFormattersToFields()
         startCounting()
+        showError()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    private fun showError() {
+        val textView = findViewById<TextView>(R.id.textView3)
+        textView.setTextColor(Color.RED)
+        val errorText = getString(R.string.incorrect_code)
+        textView.text = errorText
+        val editText = findViewById<EditText>(R.id.editText)
+        editText.background = getDrawable(R.drawable.back_red_border)
     }
 
     private fun startCounting() {
         val timerInteractor = TimerInteractor(1, secondToLeft = 60)
+        timerInteractor.stopWhenEnd = true
         timerInteractor.loop {
             setSMSButton(getString(R.string.sendSMSAgain),"$it")
         }
