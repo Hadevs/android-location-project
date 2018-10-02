@@ -4,11 +4,13 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.widget.Button
 import android.widget.EditText
 import com.example.hadevs.projectlocation.Extensions.add
 import com.example.hadevs.projectlocation.Extensions.setActionBarWith
 import com.example.hadevs.projectlocation.Formatters.PhoneFormatter
 import com.example.hadevs.projectlocation.Formatters.SMSFormatter
+import com.example.hadevs.projectlocation.Interactors.TimerInteractor
 import com.example.hadevs.projectlocation.R
 
 class ConfirmSMSActivity : AppCompatActivity() {
@@ -20,6 +22,15 @@ class ConfirmSMSActivity : AppCompatActivity() {
         val title = resources.getString(R.string.agent_screen_title)
         setActionBarWith(supportActionBar, title)
         addFormattersToFields()
+        startCounting()
+    }
+
+    private fun startCounting() {
+        val button = findViewById<Button>(R.id.confirmSMSButton)
+        val timerInteractor = TimerInteractor(1, secondToLeft = 60)
+        timerInteractor.loop {
+            button.text = "$it"
+        }
     }
 
     private fun addFormattersToFields() {
