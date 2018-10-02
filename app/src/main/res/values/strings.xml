@@ -5,4 +5,5 @@
     <string name="phoneplaceholder">+7 --- --- -- --</string>
     <string name="confirm">ПОДТВЕРДИТЬ</string>
     <string name="smsAgainConfirm">ВЫСЛАТЬ СМС СНОВА</string>
+    <string name="sendSMSAgain">ВЫСЛАТЬ СМС СНОВА</string>
 </resources>

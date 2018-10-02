@@ -12,6 +12,22 @@ import com.example.hadevs.projectlocation.Formatters.PhoneFormatter
 import com.example.hadevs.projectlocation.Formatters.SMSFormatter
 import com.example.hadevs.projectlocation.Interactors.TimerInteractor
 import com.example.hadevs.projectlocation.R
+import android.graphics.Typeface
+import android.R.id.button1
+import android.graphics.Color
+import android.support.v4.content.res.ResourcesCompat
+import android.text.Html
+import android.text.Spannable
+import android.text.style.RelativeSizeSpan
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.TypefaceSpan
+import com.example.hadevs.projectlocation.Help_files.CustomTypefaceSpan
+import android.text.Spanned
+import android.text.SpannableStringBuilder
+
+
+
 
 class ConfirmSMSActivity : AppCompatActivity() {
 
@@ -26,10 +42,9 @@ class ConfirmSMSActivity : AppCompatActivity() {
     }
 
     private fun startCounting() {
-        val button = findViewById<Button>(R.id.confirmSMSButton)
         val timerInteractor = TimerInteractor(1, secondToLeft = 60)
         timerInteractor.loop {
-            button.text = "$it"
+            setSMSButton(getString(R.string.sendSMSAgain),"$it")
         }
     }
 
@@ -39,6 +54,16 @@ class ConfirmSMSActivity : AppCompatActivity() {
 
         val smsField = findViewById<EditText>(R.id.smsEditText)
         smsField.add(SMSFormatter)
+    }
+
+    private fun setSMSButton(title: String, subtitle: String) {
+        val button = findViewById<Button>(R.id.confirmSMSButton)
+        val font = ResourcesCompat.getFont(this, R.font.roboto_medium)
+        val font2 =  ResourcesCompat.getFont(this, R.font.roboto_thin)
+        val SS = SpannableStringBuilder("$title ($subtitle)")
+        SS.setSpan(CustomTypefaceSpan("", font), 0, title.length, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
+        SS.setSpan(CustomTypefaceSpan("", font2), title.length, SS.length, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
+        button.text = SS
     }
 
 }
