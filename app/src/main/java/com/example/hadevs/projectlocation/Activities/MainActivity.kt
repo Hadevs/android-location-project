@@ -8,7 +8,8 @@ import android.support.annotation.RequiresApi
 import android.widget.Button
 import android.widget.EditText
 import com.example.hadevs.projectlocation.Extensions.add
-import com.example.hadevs.projectlocation.Interactors.PhoneFormatter
+import com.example.hadevs.projectlocation.Extensions.setActionBarWith
+import com.example.hadevs.projectlocation.Formatters.PhoneFormatter
 import com.example.hadevs.projectlocation.R
 
 

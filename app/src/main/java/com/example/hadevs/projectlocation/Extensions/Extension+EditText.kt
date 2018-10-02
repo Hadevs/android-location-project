@@ -3,7 +3,7 @@ package com.example.hadevs.projectlocation.Extensions
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import com.example.hadevs.projectlocation.Interactors.StringFormatter
+import com.example.hadevs.projectlocation.Formatters.StringFormatter
 
 fun EditText.add(formatter: StringFormatter) {
     onTextChanged {
